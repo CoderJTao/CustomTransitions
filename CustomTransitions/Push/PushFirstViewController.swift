@@ -28,6 +28,10 @@ class PushFirstViewController: UIViewController {
 extension PushFirstViewController: UINavigationControllerDelegate {
     //返回自定义过渡动画
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if operation == .pop && fromVC is PushFirstViewController {
+            return nil
+        }
+        
         return NormalPushAnimator()
     }
 }
